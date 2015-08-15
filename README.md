@@ -20,7 +20,7 @@ The purpose of this project is to provide a series of test cases to test Udacity
 
 How to run
 -----------
-Click on index.html or visit my GitHub page ( https://github.com/mellisao28/feedreadertesting). 
+Click on index.html or visit my GitHub page (http://mellisao28.github.io/FeedReaderTesting/). 
 
 Support
 -------
