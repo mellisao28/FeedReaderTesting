@@ -11,39 +11,41 @@ $(function() {
     /* The first test suite. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in the application.
      */
-
     var i;
     describe('RSS Feeds', function() {
         /* First test: it tests to make sure that the
          * allFeeds variable has been defined and that it is not
-         * empty. 
+         * empty and is an array.
          */
-        it('are defined and not empty', function() {
+        it('are defined, not empty, and an array', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
+			expect(allFeeds instanceof Array).toBeTruthy();
         });
 
         /* Second test: it loops through each feed
          * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+         * and that the URL is not empty and in URL format.
          */
 
-        it('url is defined and not empty', function() {
+        it('url is defined, not empty, and in URL format', function() {
             for (i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url).not.toEqual('');
+				expect(allFeeds[i].url).toMatch(/^http(s?)\:\/\//);
             }
         });
 
         /* Third test: loops through each feed
          * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
+         * and that the name is not empty and in string format.
          */
 
-        it('name is defined and not empty', function() {
+        it('name is defined, not empty, and string type', function() {
             for (i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name).not.toEqual('');
+				expect(typeof allFeeds[i].name).toBe('string');
             }
         });
     });
