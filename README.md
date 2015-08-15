@@ -4,9 +4,9 @@ Feed Reader Testing
 The purpose of this project is to provide a series of test cases to test Udacity Feed Reader as follow:
 
 1. RSS Feeds
-  - RSS Feeds are defined and not empty
-  - URL is defined and not empty
-  - Name is defined and not empty
+  - RSS Feeds are defined, not empty, and is an array
+  - URL is defined, not empty, and in URL format
+  - Name is defined, not empty, and in string format
 
 2. The Menu
   - The menu is hidden
