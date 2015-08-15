@@ -11,8 +11,8 @@ $(function() {
     /* The first test suite. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in the application.
      */
-		
-    var x;
+
+    var i;
     describe('RSS Feeds', function() {
         /* First test: it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -28,31 +28,24 @@ $(function() {
          * and that the URL is not empty.
          */
 
-        function check_url(feed) {
-            it('url is defined and not empty', function() {
-                expect(feed.url).toBeDefined();
-                expect(feed.url).not.toEqual('');
-            });
-        }
-
-        for (x = 0; x < allFeeds.length; x++) {
-            check_url(allFeeds[x]);
-        }
+        it('url is defined and not empty', function() {
+            for (i = 0; i < allFeeds.length; i++) {
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url).not.toEqual('');
+            }
+        });
 
         /* Third test: loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        function check_name(feed) {
-            it('name is defined and not empty', function() {
-                expect(feed.name).toBeDefined();
-                expect(feed.name).not.toEqual('');
-            });
-        }
 
-        for (x = 0; x < allFeeds.length; x++) {
-            check_name(allFeeds[x]);
-        }
+        it('name is defined and not empty', function() {
+            for (i = 0; i < allFeeds.length; i++) {
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name).not.toEqual('');
+            }
+        });
     });
 
 
@@ -111,22 +104,24 @@ $(function() {
     /* The fourth test suite: "New Feed Selection" */
     describe('New Feed Selection', function() {
         /* The first test: ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
+         * by the loadFeed function the content actually changes.
          */
         var previousContent;
 
-        // Capture previous content, then load the second feed reader 
+        // Load and capture previous content, then load the second feed reader 
         beforeEach(function(done) {
-            previousContent = $('.feed').html();
-            loadFeed(1, function() {
-                done();
+            loadFeed(0, function() {
+                previousContent = $('.feed').html();
+                loadFeed(1, function() {
+                    done();
+                });
             });
         });
 
         // Compare the new content to previous content
         it('Changes the content display', function(done) {
             var newContent = $('.feed').html();
-            expect(newContent).not.toBe(previousContent);
+            expect(newContent).not.toEqual(previousContent);
             done();
         });
     });
